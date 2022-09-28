@@ -1,4 +1,4 @@
-import { storeState, changeState, blueFood, feed} from '../src/plant.js'
+import { storeState, changeState, blueFood, feed, hydrate, superWater} from '../src/plant.js'
 
 describe('storeState', () => {
   
@@ -34,6 +34,26 @@ describe('feed', () => {
     let test = storeState();
     let plantTest = test(feed);
     expect(plantTest).toEqual({ soil : 1 });
+  });
+
+});
+
+describe('hydrate', () => {
+
+  test('should return an object with water property at 1 when the hydrate function is passed into it', () => {
+    let test = storeState();
+    let plantTest = test(hydrate);
+    expect(plantTest).toEqual({ water : 1 });
+  });
+
+});
+
+describe('superWater', () => {
+
+  test('should return an object with water property at 5 when the hydrate function is passed into it', () => {
+    let test = storeState();
+    let plantTest = test(superWater);
+    expect(plantTest).toEqual({ water : 5 });
   });
 
 });

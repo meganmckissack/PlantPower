@@ -9,6 +9,7 @@ export const storeState = () => {
 };
 
 export const stateControl = storeState();
+export const stateControl2 = storeState();
 
 // This is a function factory. We can easily create more specific functions that alter a plant's soil, water, and light to varying degrees.
 
@@ -25,7 +26,6 @@ export const changeState = (prop) => {
 
 export const feed = changeState("soil")(1);
 export const blueFood = changeState("soil")(5);
-
-// const hydrate = changeState("water")(1);
-// const superWater = changeState("water")(5);
+export const hydrate = changeState("water")(1);
+export const superWater = changeState("water")(5);
 
