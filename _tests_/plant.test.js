@@ -1,4 +1,4 @@
-import { storeState, stateControl, changeState, feed} from '../src/plant.js'
+import { storeState, stateControl, changeState, blueFood} from '../src/plant.js'
 
 describe('storeState', () => {
   
@@ -7,5 +7,10 @@ describe('storeState', () => {
     expect(test).toEqual(expect.any(Function));
   });
 
+  test('should return an object with soil property at 5 when the blueFood function is passed into it', () => {
+    let test = storeState();
+    let plantTest = test(blueFood);
+    expect(plantTest).toEqual({ soil : 5 });
+  });
   
 });
