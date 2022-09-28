@@ -1,4 +1,4 @@
-import { storeState, stateControl, changeState, blueFood} from '../src/plant.js'
+import { storeState, changeState, blueFood} from '../src/plant.js'
 
 describe('storeState', () => {
   
@@ -7,10 +7,23 @@ describe('storeState', () => {
     expect(test).toEqual(expect.any(Function));
   });
 
+});
+
+describe('changeState', () => {
+
+  test('should return an anonymous function when no arguments are passed into it, that function will always have access to any property from its parent function, changeState()', () => {
+    let test = changeState();
+    expect(test).toEqual(expect.any(Function));
+  });
+
+});
+
+describe('blueFood', () => {
+
   test('should return an object with soil property at 5 when the blueFood function is passed into it', () => {
     let test = storeState();
     let plantTest = test(blueFood);
     expect(plantTest).toEqual({ soil : 5 });
   });
-  
+
 });
