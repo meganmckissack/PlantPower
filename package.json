@@ -1,7 +1,7 @@
 {
   "name": "PlantPower",
   "version": "1.0.0",
-  "description": "#### By _**Patty Otero**_",
+  "description": "An Epicodus bootcamp exercise in state storing with functional programming. By _**Patty Otero**_",
   "main": "plant.js",
   "scripts": {
     "build": "webpack --mode=development",
