@@ -1,14 +1,19 @@
-import { blueFood, addPlant, plantCountState, storeState, feed, hydrate, superWater, stateControl, stateControl2} from '../src/plant.js';
+import { blueFood, addPlant, plantsState, storeState, feed, hydrate, superWater, stateControl, stateControl2} from '../src/plant.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
 // //UI Logic
-function incrementPlantCount(){
-  const newState = plantCountState(addPlant);
+function (plantNum){
+  export const addPlantStateControl = changeState(`plant${plantNum}`)()
+}
+
+function incrementPlants(){
+  const newState = plantsState(addPlant);
   console.log(newState);
   const plantNumber = newState.plantCounter;
   addPlantHtml(plantNumber);
+  addPlantScripts(plantNumber);
 }
 
 function addPlantHtml(num){
@@ -28,13 +33,17 @@ function addPlantHtml(num){
 </div>`);
 }
 
+function addPlantScripts(num){
+  const newState = 
+}
+
 // //JQUERY UI Logic
 $(document).ready(function() {
   console.log("docReady");
 
   // This function has side effects because we are using jQuery. Manipulating the DOM will always be a side effect. Note that we only use one of our functions to alter soil. You can easily add more.
   $('#addPlant').click(function() {
-    incrementPlantCount();
+    incrementPlants();
   });
   
   $('#feed').click(function() {
