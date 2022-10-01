@@ -1,19 +1,46 @@
-import { blueFood, feed, hydrate, superWater, stateControl, stateControl2} from '../src/plant.js';
+import { blueFood, addPlant, plantCountState, storeState, feed, hydrate, superWater, stateControl, stateControl2} from '../src/plant.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
 // //UI Logic
+function incrementPlantCount(){
+  const newState = plantCountState(addPlant);
+  console.log(newState);
+  const plantNumber = newState.plantCounter;
+  addPlantHtml(plantNumber);
+}
+
+function addPlantHtml(num){
+  $(".container").append(`<div class="plant-container">
+  <div class="grow-buttons">
+    <button class="btn-success" id="feed${num}">Add soil</button>
+    <button class="btn-success" id="superFeed${num}">give your plant the blue food!</button>
+    <button class="btn-success" id="water${num}">water your baby</button>
+    <button class="btn-success" id="superWater${num}">Give them a super water!!</button>
+    <button class="btn-success" id="show-state${num}">Current Stats</button>
+  </div>
+  <div class="plant-stats">
+    <h1>Your NEW Plant's Stats:</h1>
+    <h3><div id="soil-value-${num}">0</div></h3>
+    <h3><div id="water-value-${num}">0</div></h3>
+  </div>
+</div>`);
+}
 
 // //JQUERY UI Logic
 $(document).ready(function() {
-  console.log("hello");
+  console.log("docReady");
 
   // This function has side effects because we are using jQuery. Manipulating the DOM will always be a side effect. Note that we only use one of our functions to alter soil. You can easily add more.
+  $('#addPlant').click(function() {
+    incrementPlantCount();
+  });
   
   $('#feed').click(function() {
     const newState = stateControl(feed);
     $('#soil-value').text(`Soil: ${newState.soil}`);
+    
   });
 
   $('#superFeed').click(function() {
