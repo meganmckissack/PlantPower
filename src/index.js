@@ -4,16 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
 // //UI Logic
-function (plantNum){
-  export const addPlantStateControl = changeState(`plant${plantNum}`)()
-}
+// function (plantNum){
+//   export const addPlantStateControl = changeState(`plant${plantNum}`)()
+// }
 
 function incrementPlants(){
   const newState = plantsState(addPlant);
   console.log(newState);
   const plantNumber = newState.plantCounter;
   addPlantHtml(plantNumber);
-  addPlantScripts(plantNumber);
+  // addPlantScripts(plantNumber);
 }
 
 function addPlantHtml(num){
@@ -33,9 +33,9 @@ function addPlantHtml(num){
 </div>`);
 }
 
-function addPlantScripts(num){
-  const newState = 
-}
+// function addPlantScripts(num){
+//   const newState = 
+// }
 
 // //JQUERY UI Logic
 $(document).ready(function() {
