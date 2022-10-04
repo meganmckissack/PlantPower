@@ -1,14 +1,11 @@
-import { blueFood, addPlant, plantsState, storeState, feed, hydrate, superWater, stateControl, stateControl2, storeListState, changeListState} from '../src/plant.js';
+import { blueFood,storeState, feed, hydrate, superWater, storeListState, changeListState} from '../src/plant.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 
 //UI Logic
-// function (plantNum){
-//   export const addPlantStateControl = changeState(`plant${plantNum}`)()
-// }
 
-
+//adds HTML and event listener to newly created buttons(need to add event listener here because the buttons are created after the document ready, so any event listeners declared in the doc ready will not be applied to buttons created after)
 function addPlantHtml(plantNum){
   $(".container").append(`<div class="plant-container" id="plant-container-${plantNum}">
   <h1>Plant #${plantNum}:</h1>
@@ -26,22 +23,15 @@ function addPlantHtml(plantNum){
   </div>
     <p>--------------------------------------</p>
   </div>`);
-  $(`#grow-buttons-${plantNum}`).on("click", buttonHandler);
+  $(`#grow-buttons-${plantNum}`).on("click", buttonHandler);//event listener for new buttons
 }
-
-// function addPlantScripts(num){
-//   const newState = 
-// }
 
 function buttonHandler(event){
   event.preventDefault();
-  const id = event.target.id.replace( /^\D+/g, '');
-  console.log(id);
+  const id = event.target.id.replace( /^\D+/g, '');//parses id like "feed12" for just the number: "12"
   if (event.target.id.includes("feed")){
-    const stateControl = listControl()[id];
+    const stateControl = listControl()[id];//this declares a new stateControl on the already created plant object stored within our listControl-- which lists all plants
     const newState = stateControl(feed);
-    console.log(newState);
-    console.log(listControl());
     $(`#soil-value-${id}`).text(`Soil: ${newState.soil}`);
   } else if (event.target.id.includes("Feed")){
     const stateControl = listControl()[id];
@@ -62,7 +52,6 @@ const listControl = storeListState();
 
 // //JQUERY UI Logic
 $(document).ready(function() {
-  console.log("docReady");
 
   $('#addPlant').click(function() {
     const stateControl = storeState();
@@ -71,4 +60,5 @@ $(document).ready(function() {
     const plantNumber = newList.length - 1;
     addPlantHtml(plantNumber);
   });
+
 });
